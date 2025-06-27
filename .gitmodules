@@ -1,0 +1,6 @@
+[submodule "DjangoServer"]
+	path = DjangoServer
+	url = git@github.com:MeNaemS/django_server.git
+[submodule "TelegramShop"]
+	path = TelegramShop
+	url = git@github.com:MeNaemS/telegram_shop.git
