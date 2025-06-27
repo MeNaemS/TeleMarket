@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: aiserver-postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_DATABASE_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_DATABASE_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DATABASE_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  django:
+    build: ./DjangoServer
+    container_name: django-server
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    environment:
+      - DYNACONF_ENV=production
+
+volumes:
+  postgres_data:
