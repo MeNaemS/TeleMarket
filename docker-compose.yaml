@@ -21,7 +21,23 @@ services:
     depends_on:
       - postgres
     environment:
-      - DYNACONF_ENV=production
+      - ENV_FOR_DYNACONF=production
+    volumes:
+      - django_media:/app/order_system/media
+
+  telegram-bot:
+    build: ./TelegramShop
+    container_name: telegram-bot
+    restart: always
+    depends_on:
+      - postgres
+      - django
+    volumes:
+      - ./logs:/app/logs
+      - ./reports:/app/reports
+    environment:
+      - ENV_FOR_DYNACONF=production
 
 volumes:
   postgres_data:
+  django_media:
