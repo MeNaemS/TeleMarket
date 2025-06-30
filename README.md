@@ -192,8 +192,8 @@ cp TelegramShop/configs/config.toml TelegramShop/configs/secret.toml
 Отредактируйте файлы `secret.toml` в обеих директориях:
 
 **DjangoServer/configs/secret.toml:**
-```toml
 
+```toml
 [default.database]
 user = "shop_user"
 password = "shop_password"
@@ -304,7 +304,7 @@ chats_id = ["@production_channel"]
 
 1. **Для пользователей**:
 
-   ```
+   ```text
    /start - Регистрация и главное меню
    📦 Каталог - Просмотр товаров
    🛒 Корзина - Управление покупками
@@ -584,14 +584,6 @@ docker compose exec postgres pg_isready -U shop_user
    - Сканирование на уязвимости
    - Минимальные привилегии
 
-## 🤝 Вклад в проект
-
-1. Fork репозитория
-2. Создайте feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit изменения (`git commit -m 'Add amazing feature'`)
-4. Push в branch (`git push origin feature/amazing-feature`)
-5. Создайте Pull Request
-
 ### Стандарты кода
 
 - **Python**: PEP 8, type hints
@@ -604,27 +596,3 @@ docker compose exec postgres pg_isready -U shop_user
 Этот проект лицензирован под MIT License - см. файл [LICENSE](LICENSE) для деталей.
 
 ---
-
-## 📞 Поддержка
-
-Если у вас есть вопросы или проблемы:
-
-1. Проверьте [Issues](../../issues) на GitHub
-2. Создайте новый Issue с подробным описанием
-3. Приложите логи и конфигурацию (без секретов!)
-
-**Полезные команды для диагностики:**
-
-```bash
-# Проверка статуса всех сервисов
-docker compose ps
-
-# Просмотр логов с ошибками
-docker compose logs --tail=100 | grep -i error
-
-# Проверка подключения к БД
-docker compose exec postgres psql -U shop_user -d shop_db -c "SELECT version();"
-
-# Тест Telegram бота
-docker compose exec telegram-bot python -c "from src.config import config; print('Config loaded successfully')"
-```

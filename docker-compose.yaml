@@ -23,7 +23,8 @@ services:
     environment:
       - ENV_FOR_DYNACONF=production
     volumes:
-      - django_media:/app/order_system/media
+      - shared_media:/app/order_system/media
+      - ./logs:/app/logs
 
   telegram-bot:
     build: ./TelegramShop
@@ -35,9 +36,10 @@ services:
     volumes:
       - ./logs:/app/logs
       - ./reports:/app/reports
+      - shared_media:/app/media
     environment:
       - ENV_FOR_DYNACONF=production
 
 volumes:
   postgres_data:
-  django_media:
+  shared_media:
